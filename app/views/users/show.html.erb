@@ -1,37 +1,38 @@
 <p id="notice"><%= notice %></p>
-
+<% @users.each do |user| %>
 <p>
   <strong>Latitude:</strong>
-  <%= @user.latitude %>
+  <%= user.latitude %>
 </p>
 
 <p>
   <strong>Longitude:</strong>
-  <%= @user.longitude %>
+  <%= user.longitude %>
 </p>
 
 <p>
   <strong>Address:</strong>
-  <%= @user.address %>
+  <%= user.address %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @user.description %>
+  <%= user.description %>
 </p>
 
 <p>
   <strong>Title:</strong>
-  <%= @user.title %>
+  <%= user.title %>
 </p>
 <h3> Near by Locations </h3>
 <ul>
-<% for user in @users.nearbys(10) %>
-  <li><%=link_to user.address, user %> (<%= user.distance.round(2) %> miles)</li>
-<%end%>
+<% end %>
+<%# for user in @user.nearbys(1) %>
+   <!-- <li><%#=link_to user.address, user %> (<%#= user.distance.round(2) %> miles)</li> -->
+<%#end%>
 </ul>
 
 <p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%#= link_to 'Edit', edit_user_path(@user) %> |
+<%#= link_to 'Back', users_path %>
 </p>

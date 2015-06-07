@@ -19,6 +19,22 @@ end
   # GET /users/1
   # GET /users/1.json
   def show
+    @location = params[:search]
+    @distance = params[:miles]
+    @users = User.near(@location, @distance)
+
+    if @location.empty?
+      # gflash notice: "You can't search without a search term; please enter a location and retry!"
+      redirect_to "/"
+    else
+      if @users.length < 1
+        # gflash notice: "Sorry! We couldn't find any camps within #{@distance} miles of #{@location}."
+        redirect_to "/"
+      else
+        # search_map(@users)
+      end
+    end
+
   end
 
   # GET /users/new
