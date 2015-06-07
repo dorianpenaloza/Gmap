@@ -24,6 +24,14 @@
   <strong>Title:</strong>
   <%= @user.title %>
 </p>
+<h3> Near by Locations </h3>
+<ul>
+<% for user in @user.nearbys(10) %>
+  <li><%=link_to user.address, user %> (<%= user.distance.round(2) %> miles)</li>
+<%end%>
+</ul>
 
+<p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</p>

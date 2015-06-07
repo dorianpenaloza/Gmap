@@ -1,0 +1,38 @@
+<div style="width:100%;">
+  <div id="map" style="width: 100%; height: 500px;">
+    <%= render "search_map" %>
+  </div>
+</div>
+<div class="col-md-10 col-md-offset-1">
+  <h2>
+    <%= "Camps Near: #{params[:search].titleize}" %>
+  </h2>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Days Open</th>
+      <th>Hours Open</th>
+      <th>Phone Number</th>
+      <th>Distance</th>
+    </thead>
+    <tbody>
+   	<% @users.each do |user| %>
+      <tr>
+      	<%= link_to user.name, user_path(user), method: "get" %>
+        <td><%= user.title %></td>
+        <td><%= user.description %></td>
+        <td><%= user.address %></td>
+        <td><%= user.latitude %></td>
+        <td><%= user.longitude %></td>
+        <td>
+            <strong>
+              <%= user.distance.round(2) %>
+            </strong>
+            <%= "miles" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
